@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MP</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./output.css" rel="stylesheet">
+    </head>
+    <body class="bg-amber-600">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+
+
+
+
+
+        <script type="module">
+            const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+            const englishDigits = "0123456789";
+
+            function toEnglishDigits(str) {
+                return str.toString().replace(/[۰۱۲۳۴۵۶۷۸۹]/g, (d) => englishDigits[persianDigits.indexOf(d)]);
+            };
+            export {toEnglishDigits}; // export cannot be used in script tag without type=module
+
+            console.log(toEnglishDigits("danny ۰۹۱۰"))
+
+            // npm install lodash-es or import using its link or its address in node-modules folder
+
+            import _ from "https://cdn.jsdelivr.net/npm/lodash-es@4.17.21/+esm";
+
+            const array = [1, 2, 3, 4, 5, 4, 1];
+            const shuffledArray = _.shuffle(array);
+            console.log(shuffledArray);
+            console.log(_.uniq(array));
+
+            const str1 = "2 6"
+            console.log("str1.split(' ')", str1.split(" "))
+            const [x, y] = str1.split(" ").map(x => Number(x))
+            console.log("x =", x)
+            console.log("y =", y)
+
+            let rpt = 3;
+            let o_count = "";
+            for (let i=0; i<rpt; i++){o_count += "o"}
+            let word = "w" + o_count + "w !"
+            console.log(word)
+            let o_count2 = "o".repeat(rpt)
+            let word2 = "w" + o_count + "w !"
+            console.log(word2)
+
+            let food = "RGRRY";
+            let R = 0;
+            let G = 0;
+            let Y = 0;
+            for (let i=0; i<5; i++) {
+                switch (food[i]) {
+                    case "R":
+                        R += 1;
+                        break;
+                    case "G":
+                        G += 1;
+                        break;
+                    default:
+                        Y += 1;
+                }
+            }
+            console.log(R, G, Y)
+
+            // IMPORTANT WAY TO SEARCH IN STRINGS USING REGEX (pattern.test(str) for boolean result) (str.matchAll(pattern) for search)
+            let str2 = "danialdanny"
+            let findings = [...str2.matchAll(/da/g)]
+            console.log(findings)
+            console.log(findings.length)
+            console.log(findings[1].index)
+
+            let num2 = 5
+            const mabna2 = num2.toString(2)
+            console.log(mabna2)
+
+            let array2 = [2,3,1,12,32,6,16, "f", "ad"]
+            let array3 = ["f", "ad", "bb", "z","aa"]
+            console.log(array2.sort((a,b) => a-b)) // doesnt work for strings
+            console.log(array3.sort())
+
+            let num3 = 9;
+            let mult = [];
+            for (let i=1; i<=num3; i++) {
+                mult.push("\n")
+                for (let j=1; j<=num3; j++) {
+                    mult.push(i*j);
+                }
+            }
+            console.log(mult.join("\t")) // this is a wise method inserting tabs instead of spaces for better readablity
+
+            let str3 = "this sentence is going to be camelcased"
+            function camelcase (str) {
+                str = str.trim().split(" ");
+                return str[0].toLowerCase() + str.slice(1).map(w => w[0].toUpperCase() + w.slice(1)).join("");
+            }
+            console.log(camelcase(str3))
+
+
+            const stocks = [
+                {
+                    name: "Electric Khodro",
+                    price: 12912,
+                },
+                {
+                    name: "Iran Khodro",
+                    price: 15218,
+                },
+                {
+                    name: "Iran arghaam",
+                    price: 8853,
+                },
+                // ...
+            ];
+
+            export function getHighestPrice(stocks) {
+                return stocks.reduce((maxstock, stock) =>
+            stock.price > maxstock.price ? stock : maxstock).name
+            }
+
+            console.log(getHighestPrice(stocks)); // "Iran Khodro"
+
+
+
+
+
+
+
+
+
+        
+        </script>
+    </body>
+</html>
